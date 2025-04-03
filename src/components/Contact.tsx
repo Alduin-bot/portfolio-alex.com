@@ -56,7 +56,7 @@ export default function Contact() {
   const contactInfo = [
     { icon: <FaEnvelope />, text: "aalexandre.lefebvre@gmail.com" },
     { icon: <FaMapMarkerAlt />, text: "Split, Croatie" },
-    { icon: <FaSignal />, text: "NOMDUSITE.WWW" },
+    { icon: <FaSignal />, text: "portfolio-alex.com" },
     { icon: <FaWhatsapp />, text: "+385 91 608 5569" },
   ];
 
@@ -95,7 +95,7 @@ export default function Contact() {
     },
     {
       type: 'website',
-      value: 'NOMDUSITE.WWW'
+      value: 'portfolio-alex.com'
     },
     {
       type: 'phone',
