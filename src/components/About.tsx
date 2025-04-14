@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { FaCode, FaServer, FaMobileAlt, FaDatabase } from "react-icons/fa";
-import { SiTypescript, SiReact, SiNodedotjs, SiTailwindcss } from "react-icons/si";
+import { SiTypescript, SiReact, SiNodedotjs, SiTailwindcss, SiJavascript, SiPython, SiSupabase, SiFigma, SiCanva, SiCss3, SiHtml5 } from "react-icons/si";
 import { useTranslation } from "react-i18next";
 import { useDeveloperMode } from "../context/DeveloperModeContext";
 
@@ -13,6 +13,13 @@ export default function About() {
     { icon: <SiTypescript className="text-blue-600" size={24} />, name: "TypeScript" },
     { icon: <SiNodedotjs className="text-green-500" size={24} />, name: "Node.js" },
     { icon: <SiTailwindcss className="text-cyan-400" size={24} />, name: "Tailwind CSS" },
+    { icon: <SiJavascript className="text-yellow-400" size={24} />, name: "JavaScript" },
+    { icon: <SiPython className="text-blue-500" size={24} />, name: "Python" },
+    { icon: <SiSupabase className="text-emerald-500" size={24} />, name: "Supabase" },
+    { icon: <SiFigma className="text-purple-500" size={24} />, name: "Figma" },
+    { icon: <SiCanva className="text-blue-400" size={24} />, name: "Canva" },
+    { icon: <SiCss3 className="text-blue-500" size={24} />, name: "CSS" },
+    { icon: <SiHtml5 className="text-orange-500" size={24} />, name: "HTML" },
   ];
 
   const services = [
@@ -83,36 +90,21 @@ export default function About() {
       <code className="text-purple-300 whitespace-pre-wrap break-words">
 {`skills: {
   items: [
-    {
-      name: 'React',
-      icon: 'SiReact',
-      color: 'text-blue-400'
-    },
-    {
-      name: 'TypeScript',
-      icon: 'SiTypescript',
-      color: 'text-blue-600'
-    },
-    {
-      name: 'Node.js',
-      icon: 'SiNodedotjs',
-      color: 'text-green-500'
-    },
-    {
-      name: 'Tailwind CSS',
-      icon: 'SiTailwindcss',
-      color: 'text-cyan-400'
-    }
+    ${skills.map(skill => `{
+      name: '${skill.name}',
+      icon: '${skill.icon.type.name}',
+      color: 'text-${skill.icon.props.className.split(' ')[1]}'
+    }`).join(',\n    ')}
   ]
 };`}
       </code>
     </pre>
   ) : (
-    <div className="grid grid-cols-2 gap-6">
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
       {skills.map((skill) => (
         <div
           key={skill.name}
-          className="flex items-center gap-3 p-4 rounded-lg bg-gray-800/50 border border-gray-700"
+          className="flex items-center gap-3 p-4 rounded-lg bg-gray-800/50 border border-gray-700 hover:border-gray-600 transition-colors"
         >
           {skill.icon}
           <span className="font-medium">{skill.name}</span>
@@ -159,7 +151,7 @@ export default function About() {
       {services.map((service) => (
         <div
           key={service.title}
-          className="flex items-start gap-4 p-4 rounded-lg bg-gray-800/50 border border-gray-700"
+          className="flex items-start gap-4 p-4 rounded-lg bg-gray-800/50 border border-gray-700 hover:border-gray-600 transition-colors"
         >
           <div className="mt-1">{service.icon}</div>
           <div>
