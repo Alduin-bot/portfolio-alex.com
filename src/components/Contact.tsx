@@ -76,7 +76,7 @@ export default function Contact() {
     },
     { 
       icon: <FaPhone />, 
-      text: "+33 6 1qzdqdqd3 50 99 03",
+      text: "+33 6 13 50 99 03",
       href: "tel:+33613509903"
     }
   ];
