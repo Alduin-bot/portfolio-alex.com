@@ -9,7 +9,8 @@ export const fr = {
     title: 'Full Stack',
     subtitle: 'Développeur',
     description: 'Je crée des expériences web innovantes et performantes qui transforment vos idées en réalité.',
-    cta: 'Découvrir mes projets'
+    cta: 'Découvrir mes projets',
+    about: 'Développeur Web Français expatrié en Croatie'
   },
   projects: {
     title: 'Mes Projets',
@@ -24,19 +25,19 @@ export const fr = {
         title: 'Site Vitrine Startup Tech',
         description: 'Un design élégant pour une startup innovante',
         objective: 'Créer une présence en ligne moderne et professionnelle pour une startup innovante dans le domaine de la tech.',
-        duration: '2 mois (Janvier - Février 2024)'
+        duration: '1 mois (Janvier - Février 2024)'
       },
       project2: {
         title: 'Portfolio Photographe',
         description: 'Portfolio minimaliste et élégant',
         objective: 'Concevoir un portfolio moderne mettant en valeur les œuvres photographiques avec une navigation fluide.',
-        duration: '1.5 mois (Mars 2024)'
+        duration: '1 mois (Mars 2024)'
       },
       project3: {
         title: 'Site Vitrine Immobilier',
         description: 'Plateforme immobilière haut de gamme',
         objective: 'Développer une plateforme immobilière élégante pour présenter des biens de luxe.',
-        duration: '3 mois (Avril - Juin 2024)'
+        duration: '1.5 mois (Avril - Juin 2024)'
       }
     },
     ecommerce: {
@@ -44,19 +45,19 @@ export const fr = {
         title: 'Boutique Mode en Ligne',
         description: 'Plateforme e-commerce complète',
         objective: 'Développer une plateforme e-commerce complète avec gestion des produits et système de paiement sécurisé.',
-        duration: '4 mois (Mars - Juin 2024)'
+        duration: '2 mois (Mars - Juin 2024)'
       },
       project2: {
         title: 'Marketplace Artisanat',
         description: 'Plateforme multi-vendeurs',
         objective: 'Créer une marketplace permettant aux artisans de vendre leurs créations avec un système de commission.',
-        duration: '5 mois (Juillet - Novembre 2024)'
+        duration: '3 mois (Juillet - Novembre 2024)'
       },
       project3: {
         title: 'Épicerie Fine en Ligne',
         description: 'Boutique gastronomique digitale',
         objective: 'Concevoir une plateforme e-commerce spécialisée dans la vente de produits gastronomiques.',
-        duration: '3 mois (Septembre - Novembre 2024)'
+        duration: '2 mois (Septembre - Novembre 2024)'
       }
     },
     business: {
@@ -64,19 +65,19 @@ export const fr = {
         title: 'CRM sur Mesure',
         description: 'Gestion relation client avancée',
         objective: 'Développer un CRM personnalisé avec tableaux de bord et analyses en temps réel.',
-        duration: '6 mois (Janvier - Juin 2024)'
+        duration: '4 mois (Janvier - Juin 2024)'
       },
       project2: {
         title: 'Gestion de Stock',
         description: 'Solution logistique complète',
         objective: 'Créer un système de gestion des stocks avec suivi en temps réel et prévisions.',
-        duration: '4 mois (Juillet - Octobre 2024)'
+        duration: '2 mois (Juillet - Octobre 2024)'
       },
       project3: {
         title: 'Dashboard Analytics',
         description: 'Tableau de bord intelligent',
         objective: 'Développer un tableau de bord analytique avec visualisation de données avancée.',
-        duration: '4 mois (Août - Novembre 2024)'
+        duration: '2 mois (Août - Novembre 2024)'
       }
     },
     details: {

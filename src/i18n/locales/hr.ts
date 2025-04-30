@@ -9,7 +9,8 @@ export const hr = {
     title: 'Full Stack',
     subtitle: 'Programer',
     description: 'Stvaram inovativna i učinkovita web iskustva koja pretvaraju vaše ideje u stvarnost.',
-    cta: 'Otkrijte moje projekte'
+    cta: 'Otkrijte moje projekte',
+    about: 'Francuski web programer koji živi u Hrvatskoj'
   },
   projects: {
     title: 'Moji Projekti',

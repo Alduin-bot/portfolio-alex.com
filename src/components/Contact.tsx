@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { FaEnvelope, FaMapMarkerAlt, FaSignal, FaWhatsapp } from "react-icons/fa";
+import { FaEnvelope, FaMapMarkerAlt, FaSignal, FaPhone } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { useDeveloperMode } from "../context/DeveloperModeContext";
 
@@ -54,10 +54,31 @@ export default function Contact() {
   };
 
   const contactInfo = [
-    { icon: <FaEnvelope />, text: "aalexandre.lefebvre@gmail.com" },
-    { icon: <FaMapMarkerAlt />, text: "Split, Croatie" },
-    { icon: <FaSignal />, text: "portfolio-alex.com" },
-    { icon: <FaWhatsapp />, text: "+385 91 608 5569" },
+    { 
+      icon: <FaEnvelope />, 
+      text: "aalexandre.lefebvre@gmail.com",
+      href: "mailto:aalexandre.lefebvre@gmail.com"
+    },
+    { 
+      icon: <FaMapMarkerAlt />, 
+      text: "Split, Croatie",
+      href: "https://www.google.com/maps/place/Split,+Croatia"
+    },
+    { 
+      icon: <FaSignal />, 
+      text: "portfolio-alex.com",
+      href: "https://portfolio-alex.com"
+    },
+    { 
+      icon: <FaPhone />, 
+      text: "+385 91 608 5569",
+      href: "tel:+385916085569"
+    },
+    { 
+      icon: <FaPhone />, 
+      text: "+33 6 13 50 99 03",
+      href: "tel:+33613509903"
+    }
   ];
 
   const headerContent = isDeveloperMode ? (
@@ -100,6 +121,10 @@ export default function Contact() {
     {
       type: 'phone',
       value: '+385 91 608 5569'
+    },
+    {
+      type: 'phone',
+      value: '+33 6 13 50 99 03'
     }
   ]
 };`}
@@ -109,10 +134,16 @@ export default function Contact() {
   ) : (
     <div className="space-y-6">
       {contactInfo.map((info, index) => (
-        <div key={index} className="flex items-center gap-4 text-gray-300">
+        <a
+          key={index}
+          href={info.href}
+          target={info.href.startsWith('tel:') ? '_self' : '_blank'}
+          rel="noopener noreferrer"
+          className="flex items-center gap-4 text-gray-300 hover:text-purple-400 transition-colors duration-300"
+        >
           <span className="text-purple-400">{info.icon}</span>
           <span>{info.text}</span>
-        </div>
+        </a>
       ))}
     </div>
   );
