@@ -9,8 +9,7 @@ export const en = {
     title: 'Full Stack',
     subtitle: 'Developer',
     description: 'I create innovative and high-performance web experiences that transform your ideas into reality.',
-    cta: 'Discover my projects',
-    about: 'French web developer expatriated in Croatia'
+    cta: 'Discover my projects'
   },
   projects: {
     title: 'My Projects',

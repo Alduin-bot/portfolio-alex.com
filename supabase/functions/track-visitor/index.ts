@@ -105,6 +105,17 @@ Deno.serve(async (req) => {
                     req.headers.get('x-real-ip') || 
                     'Unknown IP';
 
+    // Skip email sending for specific IP
+    if (clientIP === '213.149.62.91') {
+      return new Response(
+        JSON.stringify({ success: true, message: 'Visitor tracked without notification' }),
+        { 
+          status: 200,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        }
+      );
+    }
+
     // Get user agent information
     const userAgent = req.headers.get('user-agent') || 'Unknown Browser';
     const browserInfo = getBrowserInfo(userAgent);

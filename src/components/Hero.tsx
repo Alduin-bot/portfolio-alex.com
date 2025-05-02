@@ -83,7 +83,7 @@ export default function Hero() {
                 <pre className="text-sm text-gray-300 whitespace-pre-wrap break-words">
                   <code>{`const Developer = {
   name: 'Alexandre Lefebvre',
-  About me: "${t('hero.about')}",
+  About me: "Développeur Web Français expatrié en croatie.",
   skills: [
     'React',
     'Node.js',

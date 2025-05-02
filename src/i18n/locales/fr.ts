@@ -9,8 +9,7 @@ export const fr = {
     title: 'Full Stack',
     subtitle: 'Développeur',
     description: 'Je crée des expériences web innovantes et performantes qui transforment vos idées en réalité.',
-    cta: 'Découvrir mes projets',
-    about: 'Développeur Web Français expatrié en Croatie'
+    cta: 'Découvrir mes projets'
   },
   projects: {
     title: 'Mes Projets',
