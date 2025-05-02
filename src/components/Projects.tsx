@@ -168,7 +168,7 @@ export default function Projects() {
       categoryId: "e-commerce",
       title: t('projects.ecommerce.project3.title'),
       description: t('projects.ecommerce.project3.description'),
-      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2440&auto=format&fit=crop",
+      image: "https://epiceriedeloicb.com/cdn/shop/files/homepage02.jpg?v=1614351280&width=3840",
       objective: t('projects.ecommerce.project3.objective'),
       duration: t('projects.ecommerce.project3.duration'),
       technologies: ["Next.js", "Supabase", "TypeScript", "Stripe"]
@@ -408,7 +408,7 @@ export default function Projects() {
                 e.stopPropagation();
                 handleNavigateProject('prev');
               }}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300 hover:scale-110 hover:bg-purple-500/50"
+              className="absolute left-[25%] top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300 hover:scale-110 hover:bg-purple-500/50"
             >
               <FaChevronLeft size={20} />
             </motion.button>
@@ -421,7 +421,7 @@ export default function Projects() {
                 e.stopPropagation();
                 handleNavigateProject('next');
               }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300 hover:scale-110 hover:bg-purple-500/50"
+              className="absolute right-[25%] top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300 hover:scale-110 hover:bg-purple-500/50"
             >
               <FaChevronRight size={20} />
             </motion.button>
