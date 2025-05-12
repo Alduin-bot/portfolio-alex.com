@@ -36,7 +36,7 @@ export default function Hero() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="text-5xl md:text-7xl font-bold mb-6"
+        className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6"
       >
         <span className="block mb-2">{t('hero.subtitle')}</span>
         <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
@@ -49,7 +49,7 @@ export default function Hero() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="text-xl text-gray-300 mb-12 max-w-2xl"
+        className="text-lg sm:text-xl text-gray-300 mb-12 max-w-2xl"
       >
         {t('hero.description')}
       </motion.p>
@@ -57,8 +57,8 @@ export default function Hero() {
   );
 
   return (
-    <section id="hero" className="min-h-screen relative flex items-center justify-center">
-      <div className="container mx-auto px-6 relative z-10">
+    <section id="hero" className="min-h-screen relative flex items-center justify-center px-4 sm:px-6">
+      <div className="container mx-auto relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}

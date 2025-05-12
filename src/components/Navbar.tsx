@@ -48,7 +48,7 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed w-full top-4 z-50 flex justify-center px-6"
+      className="fixed w-full top-6 z-50 flex justify-center px-4"
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
@@ -59,9 +59,9 @@ export default function Navbar() {
         }}
         whileHover={{ opacity: 1 }}
         transition={{ duration: 0.2 }}
-        className="px-8 py-4 rounded-2xl backdrop-blur-md border border-white/10 shadow-lg shadow-black/10 flex items-center gap-8"
+        className="px-6 py-3 rounded-2xl backdrop-blur-md border border-white/10 shadow-lg shadow-black/10 flex items-center gap-6"
       >
-        <ul className="flex items-center space-x-8">
+        <ul className="flex items-center gap-6">
           {navItems.map((item) => (
             <motion.li
               key={item.id}
@@ -79,14 +79,12 @@ export default function Navbar() {
             </motion.li>
           ))}
         </ul>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => {
-              toggleDeveloperMode();
-            }}
-            className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${
+            onClick={toggleDeveloperMode}
+            className={`flex items-center gap-2 px-3 py-2 rounded-full transition-all duration-300 ${
               isDeveloperMode 
                 ? 'bg-purple-500/20 text-purple-400 border border-purple-500/50' 
                 : 'bg-gray-800/50 text-gray-400 border border-gray-700/50'
