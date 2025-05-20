@@ -1,0 +1,10 @@
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = """
+      default-src 'self';
+      style-src 'self' https://rsms.me 'unsafe-inline';
+      script-src 'self';
+      connect-src 'self' https://backend-portfolio-production-1a2f.up.railway.app;
+      font-src 'self' https://rsms.me;
+    """
