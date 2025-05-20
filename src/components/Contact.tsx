@@ -23,6 +23,7 @@ export default function Contact() {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
+    console.log("API utilisée :", import.meta.env.VITE_API_URL);
     e.preventDefault();
     setIsLoading(true);
     setStatus(null);
