@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
@@ -9,28 +8,6 @@ import { NavbarProvider } from "./context/NavbarContext";
 import { DeveloperModeProvider } from "./context/DeveloperModeContext";
 
 export default function App() {
-  useEffect(() => {
-    const trackVisitor = async () => {
-      try {
-        const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/track-visitor`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to track visitor');
-        }
-      } catch (error) {
-        console.error('Error tracking visitor:', error);
-      }
-    };
-
-    trackVisitor();
-  }, []);
-
   return (
     <DeveloperModeProvider>
       <NavbarProvider>

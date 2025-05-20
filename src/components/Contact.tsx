@@ -28,11 +28,10 @@ export default function Contact() {
     setStatus(null);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-contact`, {
+      const response = await fetch("https://backend-portfolio-production-1a2f.up.railway.app/send-contact-email", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          "Content-Type": "application/json"
         },
         body: JSON.stringify(formData),
       });
@@ -43,7 +42,7 @@ export default function Contact() {
         setStatus(t('contact.form.success'));
         setFormData({ name: "", email: "", company: "", phone: "", subject: "", message: "" });
       } else {
-        setStatus(`${t('contact.form.error')} ${data.error}`);
+        setStatus(`${t('contact.form.error')} ${data.error || ''}`);
       }
     } catch (error) {
       console.error('Error sending message:', error);
@@ -54,31 +53,11 @@ export default function Contact() {
   };
 
   const contactInfo = [
-    { 
-      icon: <FaEnvelope />, 
-      text: "aalexandre.lefebvre@gmail.com",
-      href: "mailto:aalexandre.lefebvre@gmail.com"
-    },
-    { 
-      icon: <FaMapMarkerAlt />, 
-      text: "Split, Croatie",
-      href: "https://www.google.com/maps/place/Split,+Croatia"
-    },
-    { 
-      icon: <FaSignal />, 
-      text: "portfolio-alex.com",
-      href: "https://portfolio-alex.com"
-    },
-    { 
-      icon: <FaPhone />, 
-      text: "+385 91 608 5569",
-      href: "tel:+385916085569"
-    },
-    { 
-      icon: <FaPhone />, 
-      text: "+33 6 13 50 99 03",
-      href: "tel:+33613509903"
-    }
+    { icon: <FaEnvelope />, text: "aalexandre.lefebvre@gmail.com", href: "mailto:aalexandre.lefebvre@gmail.com" },
+    { icon: <FaMapMarkerAlt />, text: "Split, Croatie", href: "https://www.google.com/maps/place/Split,+Croatia" },
+    { icon: <FaSignal />, text: "portfolio-alex.com", href: "https://portfolio-alex.com" },
+    { icon: <FaPhone />, text: "+385 91 608 5569", href: "tel:+385916085569" },
+    { icon: <FaPhone />, text: "+33 6 13 50 99 03", href: "tel:+33613509903" }
   ];
 
   const headerContent = isDeveloperMode ? (
@@ -159,9 +138,7 @@ export default function Contact() {
             value={formData.name}
             onChange={handleChange}
             className={`w-full px-4 py-3 rounded-lg ${
-              isDeveloperMode 
-                ? "bg-transparent text-white placeholder-gray-400 focus:outline-none" 
-                : "bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500"
+              isDeveloperMode ? "bg-transparent text-white placeholder-gray-400 focus:outline-none" : "bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500"
             } transition-colors`}
             required
             disabled={isLoading}
@@ -175,9 +152,7 @@ export default function Contact() {
             value={formData.email}
             onChange={handleChange}
             className={`w-full px-4 py-3 rounded-lg ${
-              isDeveloperMode 
-                ? "bg-transparent text-white placeholder-gray-400 focus:outline-none" 
-                : "bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500"
+              isDeveloperMode ? "bg-transparent text-white placeholder-gray-400 focus:outline-none" : "bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500"
             } transition-colors`}
             required
             disabled={isLoading}
@@ -193,9 +168,7 @@ export default function Contact() {
             value={formData.company}
             onChange={handleChange}
             className={`w-full px-4 py-3 rounded-lg ${
-              isDeveloperMode 
-                ? "bg-transparent text-white placeholder-gray-400 focus:outline-none" 
-                : "bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500"
+              isDeveloperMode ? "bg-transparent text-white placeholder-gray-400 focus:outline-none" : "bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500"
             } transition-colors`}
             disabled={isLoading}
           />
@@ -208,9 +181,7 @@ export default function Contact() {
             value={formData.phone}
             onChange={handleChange}
             className={`w-full px-4 py-3 rounded-lg ${
-              isDeveloperMode 
-                ? "bg-transparent text-white placeholder-gray-400 focus:outline-none" 
-                : "bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500"
+              isDeveloperMode ? "bg-transparent text-white placeholder-gray-400 focus:outline-none" : "bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500"
             } transition-colors`}
             disabled={isLoading}
           />
@@ -224,9 +195,7 @@ export default function Contact() {
           value={formData.subject}
           onChange={handleChange}
           className={`w-full px-4 py-3 rounded-lg ${
-            isDeveloperMode 
-              ? "bg-transparent text-white placeholder-gray-400 focus:outline-none" 
-              : "bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500"
+            isDeveloperMode ? "bg-transparent text-white placeholder-gray-400 focus:outline-none" : "bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500"
           } transition-colors`}
           required
           disabled={isLoading}
@@ -240,9 +209,7 @@ export default function Contact() {
           onChange={handleChange}
           rows={5}
           className={`w-full px-4 py-3 rounded-lg ${
-            isDeveloperMode 
-              ? "bg-transparent text-white placeholder-gray-400 focus:outline-none" 
-              : "bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500"
+            isDeveloperMode ? "bg-transparent text-white placeholder-gray-400 focus:outline-none" : "bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500"
           } transition-colors resize-none`}
           required
           disabled={isLoading}
@@ -251,9 +218,7 @@ export default function Contact() {
       <button
         type="submit"
         disabled={isLoading}
-        className={`w-full px-6 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white font-medium hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 ${
-          isLoading ? 'opacity-75 cursor-not-allowed' : ''
-        }`}
+        className={`w-full px-6 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white font-medium hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 ${isLoading ? 'opacity-75 cursor-not-allowed' : ''}`}
       >
         {isLoading ? t('contact.form.sending') : t('contact.form.send')}
       </button>
@@ -261,9 +226,7 @@ export default function Contact() {
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className={`text-center mt-4 ${
-            status === t('contact.form.success') ? 'text-green-400' : 'text-red-400'
-          }`}
+          className={`text-center mt-4 ${status === t('contact.form.success') ? 'text-green-400' : 'text-red-400'}`}
         >
           {status}
         </motion.p>
