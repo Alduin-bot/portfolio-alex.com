@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { IoClose } from "react-icons/io5";
 import { FaReact, FaNodeJs, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { SiTailwindcss, SiTypescript, SiFramer, SiNextdotjs, SiPrisma, SiSupabase, SiStripe, SiFirebase, SiDocker } from "react-icons/si";
@@ -28,79 +28,31 @@ interface Category {
 
 const getTechIcon = (tech: string) => {
   switch (tech) {
-    case "React":
-      return <FaReact className="text-blue-500" />;
-    case "Next.js":
-      return <SiNextdotjs className="text-white" />;
-    case "Node.js":
-      return <FaNodeJs className="text-green-500" />;
-    case "TailwindCSS":
-      return <SiTailwindcss className="text-cyan-500" />;
-    case "TypeScript":
-      return <SiTypescript className="text-blue-600" />;
-    case "Framer Motion":
-      return <SiFramer className="text-purple-500" />;
-    case "Prisma":
-      return <SiPrisma className="text-teal-500" />;
-    case "Supabase":
-      return <SiSupabase className="text-green-500" />;
-    case "Stripe":
-      return <SiStripe className="text-purple-500" />;
-    case "Firebase":
-      return <SiFirebase className="text-yellow-500" />;
-    case "Docker":
-      return <SiDocker className="text-blue-500" />;
-    default:
-      return null;
+    case "React": return <FaReact className="text-blue-500" />;
+    case "Next.js": return <SiNextdotjs className="text-white" />;
+    case "Node.js": return <FaNodeJs className="text-green-500" />;
+    case "TailwindCSS": return <SiTailwindcss className="text-cyan-500" />;
+    case "TypeScript": return <SiTypescript className="text-blue-600" />;
+    case "Framer Motion": return <SiFramer className="text-purple-500" />;
+    case "Prisma": return <SiPrisma className="text-teal-500" />;
+    case "Supabase": return <SiSupabase className="text-green-500" />;
+    case "Stripe": return <SiStripe className="text-purple-500" />;
+    case "Firebase": return <SiFirebase className="text-yellow-500" />;
+    case "Docker": return <SiDocker className="text-blue-500" />;
+    default: return null;
   }
 };
 
-const slideVariants = {
-  enterLeft: { 
-    x: 300, 
-    opacity: 0,
-    transition: {
-      type: "tween",
-      duration: 0.4,
-      ease: "easeInOut"
-    }
-  },
-  enterRight: { 
-    x: -300, 
-    opacity: 0,
-    transition: {
-      type: "tween",
-      duration: 0.4,
-      ease: "easeInOut"
-    }
-  },
-  center: { 
-    x: 0, 
-    opacity: 1,
-    transition: {
-      type: "tween",
-      duration: 0.4,
-      ease: "easeInOut"
-    }
-  },
-  exitLeft: { 
-    x: -300, 
-    opacity: 0,
-    transition: {
-      type: "tween",
-      duration: 0.4,
-      ease: "easeInOut"
-    }
-  },
-  exitRight: { 
-    x: 300, 
-    opacity: 0,
-    transition: {
-      type: "tween",
-      duration: 0.4,
-      ease: "easeInOut"
-    }
-  }
+// ✅ transition compatible TypeScript stricte
+const transition = { type: "tween" as const, duration: 0.4, ease: "easeInOut" as const };
+
+// ✅ slideVariants compatible TypeScript
+const slideVariants: Variants = {
+  enterLeft: { x: 300, opacity: 0, transition },
+  enterRight: { x: -300, opacity: 0, transition },
+  center: { x: 0, opacity: 1, transition },
+  exitLeft: { x: -300, opacity: 0, transition },
+  exitRight: { x: 300, opacity: 0, transition },
 };
 
 export default function Projects() {
@@ -111,7 +63,7 @@ export default function Projects() {
   const [slideDirection, setSlideDirection] = useState<'left' | 'right' | null>(null);
 
   const projects: Project[] = [
-    // Site Vitrine Projects
+    // Site Vitrine
     {
       id: "site-vitrine-1",
       categoryId: "site-vitrine",
@@ -142,7 +94,7 @@ export default function Projects() {
       duration: t('projects.showcase.project3.duration'),
       technologies: ["React", "TailwindCSS", "TypeScript", "Framer Motion"]
     },
-    // E-commerce Projects
+    // E-commerce
     {
       id: "e-commerce-1",
       categoryId: "e-commerce",
@@ -173,7 +125,7 @@ export default function Projects() {
       duration: t('projects.ecommerce.project3.duration'),
       technologies: ["Next.js", "Supabase", "TypeScript", "Stripe"]
     },
-    // Logiciel Métier Projects
+    // Logiciel Métier
     {
       id: "logiciel-metier-1",
       categoryId: "logiciel-metier",
@@ -250,114 +202,21 @@ export default function Projects() {
   };
 
   const handleOverlayClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) {
-      handleClose();
-    }
+    if (e.target === e.currentTarget) handleClose();
   };
 
   const handleNavigateProject = (direction: 'prev' | 'next') => {
     if (!selectedProject) return;
-
     const categoryProjects = projects.filter(p => p.categoryId === selectedProject.categoryId);
     const currentIndex = categoryProjects.findIndex(p => p.id === selectedProject.id);
-    
-    if (direction === 'prev' && currentIndex > 0) {
+    if (direction === 'prev') {
       setSlideDirection('right');
-      setSelectedProject(categoryProjects[currentIndex - 1]);
-    } else if (direction === 'next' && currentIndex < categoryProjects.length - 1) {
-      setSlideDirection('left');
-      setSelectedProject(categoryProjects[currentIndex + 1]);
+      setSelectedProject(categoryProjects[(currentIndex - 1 + categoryProjects.length) % categoryProjects.length]);
     } else {
-      if (direction === 'prev' && currentIndex === 0) {
-        setSlideDirection('right');
-        setSelectedProject(categoryProjects[categoryProjects.length - 1]);
-      } else if (direction === 'next' && currentIndex === categoryProjects.length - 1) {
-        setSlideDirection('left');
-        setSelectedProject(categoryProjects[0]);
-      }
+      setSlideDirection('left');
+      setSelectedProject(categoryProjects[(currentIndex + 1) % categoryProjects.length]);
     }
   };
-
-  const headerContent = isDeveloperMode ? (
-    <div className="flex justify-center items-center mb-16">
-      <pre className="text-sm font-mono bg-purple-500/10 p-6 rounded-xl border border-purple-500/20 backdrop-blur-sm overflow-x-auto max-w-lg">
-        <code className="text-purple-300 whitespace-pre-wrap break-words">
-{`projects: {
-  title: '${t('projects.title')}',
-  description: '${t('projects.description')}'
-};`}
-        </code>
-      </pre>
-    </div>
-  ) : (
-    <>
-      <h2 className="text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
-        {t('projects.title')}
-      </h2>
-      <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-        {t('projects.description')}
-      </p>
-    </>
-  );
-
-  const projectContent = selectedProject && (
-    <>
-      <img
-        src={selectedProject.image}
-        alt={selectedProject.title}
-        className="w-full h-40 object-cover rounded-lg mb-6"
-      />
-      {isDeveloperMode ? (
-        <pre className="text-sm font-mono bg-purple-500/10 p-6 rounded-xl border border-purple-500/20 backdrop-blur-sm overflow-x-auto">
-          <code className="text-purple-300 whitespace-pre-wrap break-words">
-{`project: {
-  id: '${selectedProject.id}',
-  title: '${selectedProject.title}',
-  description: '${selectedProject.description}',
-  objective: '${selectedProject.objective}',
-  duration: '${selectedProject.duration}',
-  technologies: [
-    ${selectedProject.technologies.map(tech => `'${tech}'`).join(',\n    ')}
-  ]
-}`}
-          </code>
-        </pre>
-      ) : (
-        <>
-          <h3 className="text-xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
-            {selectedProject.title}
-          </h3>
-          
-          <div className="space-y-4">
-            <div>
-              <h4 className="text-base font-semibold mb-1 text-white">{t('projects.details.objective')}</h4>
-              <p className="text-sm text-gray-300">{selectedProject.objective}</p>
-            </div>
-
-            <div>
-              <h4 className="text-base font-semibold mb-1 text-white">{t('projects.details.duration')}</h4>
-              <p className="text-sm text-gray-300">{selectedProject.duration}</p>
-            </div>
-
-            <div>
-              <h4 className="text-base font-semibold mb-2 text-white">{t('projects.details.technologies')}</h4>
-              <div className="flex flex-wrap gap-2">
-                {selectedProject.technologies.map((tech) => (
-                  <div
-                    key={tech}
-                    className="flex items-center gap-1.5 bg-gray-700/50 px-3 py-1.5 rounded-full border border-gray-600/50"
-                  >
-                    {getTechIcon(tech)}
-                    <span className="text-sm text-gray-200">{tech}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </>
-      )}
-    </>
-  );
 
   return (
     <section id="projects" className="container mx-auto px-6 relative z-10 py-20">
@@ -368,7 +227,22 @@ export default function Projects() {
         transition={{ duration: 0.8 }}
         className={`${isDeveloperMode ? "pt-0" : "text-center mb-16"}`}
       >
-        {headerContent}
+        {isDeveloperMode ? (
+          <div className="flex justify-center items-center mb-16">
+            <pre className="text-sm font-mono bg-purple-500/10 p-6 rounded-xl border border-purple-500/20 backdrop-blur-sm overflow-x-auto max-w-lg">
+              <code className="text-purple-300 whitespace-pre-wrap break-words">
+                {`projects: { title: '${t('projects.title')}', description: '${t('projects.description')}' }`}
+              </code>
+            </pre>
+          </div>
+        ) : (
+          <>
+            <h2 className="text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+              {t('projects.title')}
+            </h2>
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">{t('projects.description')}</p>
+          </>
+        )}
       </motion.div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -431,35 +305,52 @@ export default function Projects() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               onClick={handleClose}
-              className={`absolute top-4 right-4 p-3 rounded-full text-white transition-all duration-300 hover:scale-110 ${
-                isDeveloperMode 
-                  ? 'bg-purple-500/20 hover:bg-purple-500/30' 
-                  : 'bg-black/50 hover:bg-black/70 hover:bg-purple-500/50'
-              }`}
+              className="absolute top-4 right-4 p-3 rounded-full text-white bg-black/50 hover:bg-black/70 hover:bg-purple-500/50"
             >
               <IoClose size={24} />
             </motion.button>
 
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className={`max-w-lg w-full max-h-[80vh] overflow-y-auto relative ${
-                isDeveloperMode 
-                  ? 'bg-transparent p-6' 
-                  : 'bg-gray-800/90 backdrop-blur-md rounded-xl p-6 border border-gray-700/50 shadow-xl'
-              }`}
+              key={selectedProject.id}
+              initial={slideDirection === 'left' ? 'enterRight' : 'enterLeft'}
+              animate="center"
+              exit={slideDirection === 'left' ? 'exitLeft' : 'exitRight'}
+              variants={slideVariants}
+              className="max-w-lg w-full max-h-[80vh] overflow-y-auto relative bg-gray-800/90 backdrop-blur-md rounded-xl p-6 border border-gray-700/50 shadow-xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <motion.div
-                key={selectedProject.id}
-                initial={slideDirection === 'left' ? 'enterRight' : 'enterLeft'}
-                animate="center"
-                exit={slideDirection === 'left' ? 'exitLeft' : 'exitRight'}
-                variants={slideVariants}
-              >
-                {projectContent}
-              </motion.div>
+              <img
+                src={selectedProject.image}
+                alt={selectedProject.title}
+                className="w-full h-40 object-cover rounded-lg mb-6"
+              />
+              <h3 className="text-xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+                {selectedProject.title}
+              </h3>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="text-base font-semibold mb-1 text-white">{t('projects.details.objective')}</h4>
+                  <p className="text-sm text-gray-300">{selectedProject.objective}</p>
+                </div>
+                <div>
+                  <h4 className="text-base font-semibold mb-1 text-white">{t('projects.details.duration')}</h4>
+                  <p className="text-sm text-gray-300">{selectedProject.duration}</p>
+                </div>
+                <div>
+                  <h4 className="text-base font-semibold mb-2 text-white">{t('projects.details.technologies')}</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.technologies.map((tech) => (
+                      <div
+                        key={tech}
+                        className="flex items-center gap-1.5 bg-gray-700/50 px-3 py-1.5 rounded-full border border-gray-600/50"
+                      >
+                        {getTechIcon(tech)}
+                        <span className="text-sm text-gray-200">{tech}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         )}
