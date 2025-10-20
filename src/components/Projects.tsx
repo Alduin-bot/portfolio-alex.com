@@ -100,7 +100,7 @@ export default function Projects() {
       categoryId: "e-commerce",
       title: t('projects.ecommerce.project1.title'),
       description: t('projects.ecommerce.project1.description'),
-      image: "/boutique.png",
+      image: "/Boutique.png",
       objective: t('projects.ecommerce.project1.objective'),
       duration: t('projects.ecommerce.project1.duration'),
       technologies: ["Next.js", "Node.js", "TypeScript", "Stripe"]
