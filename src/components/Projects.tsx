@@ -207,8 +207,10 @@ export default function Projects() {
 
   const handleNavigateProject = (direction: 'prev' | 'next') => {
     if (!selectedProject) return;
+    
     const categoryProjects = projects.filter(p => p.categoryId === selectedProject.categoryId);
     const currentIndex = categoryProjects.findIndex(p => p.id === selectedProject.id);
+    
     if (direction === 'prev') {
       setSlideDirection('right');
       setSelectedProject(categoryProjects[(currentIndex - 1 + categoryProjects.length) % categoryProjects.length]);
@@ -274,31 +276,38 @@ export default function Projects() {
             onClick={handleOverlayClick}
             className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           >
-            <motion.button
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              onClick={(e) => {
-                e.stopPropagation();
-                handleNavigateProject('prev');
-              }}
-              className="absolute left-[25%] top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300 hover:scale-110 hover:bg-purple-500/50"
-            >
-              <FaChevronLeft size={20} />
-            </motion.button>
+            {(() => {
+              const categoryProjects = projects.filter(p => p.categoryId === selectedProject.categoryId);
+              return categoryProjects.length > 1 && (
+                <>
+                  <motion.button
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleNavigateProject('prev');
+                    }}
+                    className="absolute left-4 md:left-[25%] top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300 hover:scale-110 hover:bg-purple-500/50 z-10"
+                  >
+                    <FaChevronLeft size={20} />
+                  </motion.button>
 
-            <motion.button
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 20 }}
-              onClick={(e) => {
-                e.stopPropagation();
-                handleNavigateProject('next');
-              }}
-              className="absolute right-[25%] top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300 hover:scale-110 hover:bg-purple-500/50"
-            >
-              <FaChevronRight size={20} />
-            </motion.button>
+                  <motion.button
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 20 }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleNavigateProject('next');
+                    }}
+                    className="absolute right-4 md:right-[25%] top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300 hover:scale-110 hover:bg-purple-500/50 z-10"
+                  >
+                    <FaChevronRight size={20} />
+                  </motion.button>
+                </>
+              );
+            })()}
 
             <motion.button
               initial={{ opacity: 0, y: -20 }}
@@ -316,7 +325,7 @@ export default function Projects() {
               animate="center"
               exit={slideDirection === 'left' ? 'exitLeft' : 'exitRight'}
               variants={slideVariants}
-              className="max-w-lg w-full max-h-[80vh] overflow-y-auto relative bg-gray-800/90 backdrop-blur-md rounded-xl p-6 border border-gray-700/50 shadow-xl"
+              className="max-w-lg w-full max-h-[80vh] overflow-y-auto relative bg-gray-800/90 backdrop-blur-md rounded-xl p-6 border border-gray-700/50 shadow-xl mx-4"
               onClick={(e) => e.stopPropagation()}
             >
               <img
@@ -327,6 +336,26 @@ export default function Projects() {
               <h3 className="text-xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
                 {selectedProject.title}
               </h3>
+              
+              {(() => {
+                const categoryProjects = projects.filter(p => p.categoryId === selectedProject.categoryId);
+                const currentIndex = categoryProjects.findIndex(p => p.id === selectedProject.id);
+                return categoryProjects.length > 1 && (
+                  <div className="flex justify-center mb-4">
+                    <div className="flex gap-2">
+                      {categoryProjects.map((_, index) => (
+                        <div
+                          key={index}
+                          className={`w-2 h-2 rounded-full transition-colors ${
+                            index === currentIndex ? 'bg-purple-400' : 'bg-gray-600'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                );
+              })()}
+              
               <div className="space-y-4">
                 <div>
                   <h4 className="text-base font-semibold mb-1 text-white">{t('projects.details.objective')}</h4>
