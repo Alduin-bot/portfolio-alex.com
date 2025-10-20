@@ -100,7 +100,7 @@ export default function Projects() {
       categoryId: "e-commerce",
       title: t('projects.ecommerce.project1.title'),
       description: t('projects.ecommerce.project1.description'),
-      image: "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=2432&auto=format&fit=crop",
+      image: "/boutique.png",
       objective: t('projects.ecommerce.project1.objective'),
       duration: t('projects.ecommerce.project1.duration'),
       technologies: ["Next.js", "Node.js", "TypeScript", "Stripe"]
@@ -110,7 +110,7 @@ export default function Projects() {
       categoryId: "e-commerce",
       title: t('projects.ecommerce.project2.title'),
       description: t('projects.ecommerce.project2.description'),
-      image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=2440&auto=format&fit=crop",
+      image: "/open.png",
       objective: t('projects.ecommerce.project2.objective'),
       duration: t('projects.ecommerce.project2.duration'),
       technologies: ["Next.js", "Prisma", "TypeScript", "Stripe"]
@@ -120,7 +120,7 @@ export default function Projects() {
       categoryId: "e-commerce",
       title: t('projects.ecommerce.project3.title'),
       description: t('projects.ecommerce.project3.description'),
-      image: "https://epiceriedeloicb.com/cdn/shop/files/homepage02.jpg?v=1614351280&width=3840",
+      image: "/epi.png",
       objective: t('projects.ecommerce.project3.objective'),
       duration: t('projects.ecommerce.project3.duration'),
       technologies: ["Next.js", "Supabase", "TypeScript", "Stripe"]
@@ -169,7 +169,7 @@ export default function Projects() {
       id: "e-commerce",
       title: t('projects.categories.ecommerce'),
       description: t('projects.description'),
-      image: "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=2432&auto=format&fit=crop"
+      image: "/boutique.png"
     },
     {
       id: "logiciel-metier",
