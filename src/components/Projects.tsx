@@ -169,7 +169,7 @@ export default function Projects() {
       id: "e-commerce",
       title: t('projects.categories.ecommerce'),
       description: t('projects.description'),
-      image: "/boutique.png"
+      image: "/Boutique.png"
     },
     {
       id: "logiciel-metier",
