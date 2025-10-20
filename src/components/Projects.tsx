@@ -69,7 +69,7 @@ export default function Projects() {
       categoryId: "site-vitrine",
       title: t('projects.showcase.project1.title'),
       description: t('projects.showcase.project1.description'),
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop",
+      image: "/startup.png",
       objective: t('projects.showcase.project1.objective'),
       duration: t('projects.showcase.project1.duration'),
       technologies: ["React", "TailwindCSS", "TypeScript", "Framer Motion"]
@@ -79,7 +79,7 @@ export default function Projects() {
       categoryId: "site-vitrine",
       title: t('projects.showcase.project2.title'),
       description: t('projects.showcase.project2.description'),
-      image: "https://images.unsplash.com/photo-1554048612-b6a482bc67e5?q=80&w=2440&auto=format&fit=crop",
+      image: "/photo.png",
       objective: t('projects.showcase.project2.objective'),
       duration: t('projects.showcase.project2.duration'),
       technologies: ["Next.js", "TailwindCSS", "TypeScript", "Framer Motion"]
@@ -89,7 +89,7 @@ export default function Projects() {
       categoryId: "site-vitrine",
       title: t('projects.showcase.project3.title'),
       description: t('projects.showcase.project3.description'),
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2440&auto=format&fit=crop",
+      image: "/estate.png",
       objective: t('projects.showcase.project3.objective'),
       duration: t('projects.showcase.project3.duration'),
       technologies: ["React", "TailwindCSS", "TypeScript", "Framer Motion"]
@@ -163,7 +163,7 @@ export default function Projects() {
       id: "site-vitrine",
       title: t('projects.categories.showcase'),
       description: t('projects.description'),
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop"
+      image: "/startup.png"
     },
     {
       id: "e-commerce",
