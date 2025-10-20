@@ -131,7 +131,7 @@ export default function Projects() {
       categoryId: "logiciel-metier",
       title: t('projects.business.project1.title'),
       description: t('projects.business.project1.description'),
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2440&auto=format&fit=crop",
+      image: "/CRM.png",
       objective: t('projects.business.project1.objective'),
       duration: t('projects.business.project1.duration'),
       technologies: ["React", "Node.js", "TypeScript", "Docker"]
@@ -141,7 +141,7 @@ export default function Projects() {
       categoryId: "logiciel-metier",
       title: t('projects.business.project2.title'),
       description: t('projects.business.project2.description'),
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2440&auto=format&fit=crop",
+      image: "/stock.png",
       objective: t('projects.business.project2.objective'),
       duration: t('projects.business.project2.duration'),
       technologies: ["Next.js", "Prisma", "TypeScript", "Docker"]
@@ -151,7 +151,7 @@ export default function Projects() {
       categoryId: "logiciel-metier",
       title: t('projects.business.project3.title'),
       description: t('projects.business.project3.description'),
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2440&auto=format&fit=crop",
+      image: "/dash.png",
       objective: t('projects.business.project3.objective'),
       duration: t('projects.business.project3.duration'),
       technologies: ["React", "Firebase", "TypeScript", "Docker"]
@@ -175,7 +175,7 @@ export default function Projects() {
       id: "logiciel-metier",
       title: t('projects.categories.business'),
       description: t('projects.description'),
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2440&auto=format&fit=crop"
+      image: "/CRM.png"
     }
   ];
 
