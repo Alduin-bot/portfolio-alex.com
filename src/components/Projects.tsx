@@ -245,8 +245,7 @@ export default function Projects() {
         )}
       </motion.div>
 
-      {/* Desktop: Grid layout */}
-      <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {categories.map((category, index) => (
           <motion.div
             key={category.id}
@@ -264,40 +263,6 @@ export default function Projects() {
             />
           </motion.div>
         ))}
-      </div>
-
-      {/* Mobile: Horizontal scroll */}
-      <div className="md:hidden">
-        <div className="flex gap-4 overflow-x-auto pb-4 px-2 scrollbar-hide snap-x snap-mandatory">
-          {categories.map((category, index) => (
-            <motion.div
-              key={category.id}
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              onClick={() => handleCategoryClick(category.id)}
-              className="flex-shrink-0 w-72 snap-center"
-            >
-              <CardProjet
-                title={category.title}
-                description={category.description}
-                image={category.image}
-                categoryId={category.id}
-              />
-            </motion.div>
-          ))}
-        </div>
-        
-        {/* Indicateur de défilement */}
-        <div className="flex justify-center mt-4 gap-2">
-          {categories.map((_, index) => (
-            <div
-              key={index}
-              className="w-2 h-2 rounded-full bg-gray-600"
-            />
-          ))}
-        </div>
       </div>
 
       <AnimatePresence mode="wait">
